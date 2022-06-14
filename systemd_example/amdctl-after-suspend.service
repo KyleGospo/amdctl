@@ -1,0 +1,10 @@
+[Unit]
+Description=Run amdctl after suspend/hibernate/hybrid-sleep
+After=suspend.target hibernate.target hybrid-sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/amdctl.sh
+
+[Install] 
+WantedBy=suspend.target hibernate.target hybrid-sleep.target

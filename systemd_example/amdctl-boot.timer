@@ -1,0 +1,9 @@
+[Unit]
+Description=Run amdctl after boot
+
+[Timer]
+OnBootSec=15
+Unit=amdctl-boot.service
+
+[Install]
+WantedBy=timers.target

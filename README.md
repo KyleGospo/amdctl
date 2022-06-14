@@ -1,15 +1,17 @@
 # amdctl
+![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/amdctl/package/amdctl/status_image/last_build.png?)
+
+
 Set P-State voltages and clock speeds on recent AMD CPUs on Linux.
 ### Disclaimer:
 This software can damage your hardware, use at your own risk.
 ## Description:
 Tool for changing voltages and clock speeds for AMD processors with control over every power state and CPU core.
-### Compilation:
-You can compile with the program `make`.
+## Installing:
+You can get releases for Fedora from my [Copr](https://copr.fedorainfracloud.org/coprs/kylegospo/amdctl/).
 ### Usage:
-Make the binary executable `chmod +x amdctl`.  
-Run the program for a list of options, you can type `./amdctl` to run it.  
-`./amdctl -x` to get a description of the various words used in the program.
+Run the program for a list of options, you can type `amdctl` to run it.  
+`amdctl -x` to get a description of the various words used in the program.
 ### Undervolting:
 Undervolting is done by **increasing** the value of the CpuVid field for a specific P-state.  
 This can be done by invoking 'sudo /path/to/amdctl -p**P** -v**V**' in console, where **P** is the P-state of which the CpuVid you want to change and **V** is the value you want the CpuVid field to have.  
@@ -32,17 +34,14 @@ Anything newer than 19h (for now).
 - Root access.
 - Msr kernel module.
 
-To manually load the msr module: `sudo modprobe msr`  
-To automatically load the msr module see the [arch wiki](https://wiki.archlinux.org/index.php/Kernel_modules#Automatic_module_handling).
-
-On Kernel's 5.9 and higher, userspace writes to MSR are restricted, for now (in the future this may become impossible) you can allow writing to MSR from userspace using one of the following methods:
+On Kernels 5.9 and higher, userspace writes to MSR are restricted, for now (in the future this may become impossible) you can allow writing to MSR from userspace using one of the following methods:
 
 - Using amdctl:
-  Pass the `-m` option: `sudo ./amdctl -m -g`
+  Pass the `-m` option: `sudo /usr/sbin/amdctl -m -g`
 - After the kernel is loaded (runtime):
   `sudo bash -c "echo on > /sys/module/msr/parameters/allow_writes"`
 - When loading the kernel:
-  Add `msr.allow_writes=on` to kernel parameters : https://wiki.archlinux.org/title/kernel_parameters
+  Add `msr.allow_writes=on` to kernel parameters using `sudo grubby --update-kernel=ALL --args="msr.allow_writes=on"`
 
 ### References:
 https://developer.amd.com/resources/developer-guides-manuals/

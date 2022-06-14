@@ -1,0 +1,6 @@
+[Unit]
+Description=Run amdctl after boot
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/amdctl.sh
