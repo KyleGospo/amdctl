@@ -27,9 +27,10 @@ Disclaimer: This software can damage your hardware, use at your own risk.
 
 %install
 mkdir -p %{buildroot}/%{_sbindir}
+install -d %{buildroot}%{_modulesloaddir}
 install -m 0755 ./%{name} %{buildroot}/%{_sbindir}/
-install -d %{buildroot}%{_sysconfdir}/modules-load.d
-cat > %{buildroot}%{_sysconfdir}/modules-load.d/%{name}.conf << EOF
+mkdir -p %{buildroot}/%{_modulesloaddir}
+cat > %{buildroot}%{_modulesloaddir}/%{name}.conf << EOF
 msr
 EOF
 
@@ -37,7 +38,7 @@ EOF
 %license LICENSE
 %doc README.md
 %{_sbindir}/%{name}
-%{_sysconfdir}/modules-load.d/%{name}.conf
+%{_modulesloaddir}/%{name}.conf
 
 %changelog
 {{{ git_dir_changelog }}}
