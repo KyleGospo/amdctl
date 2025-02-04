@@ -26,10 +26,9 @@ Disclaimer: This software can damage your hardware, use at your own risk.
 %make_build
 
 %install
-mkdir -p %{buildroot}/%{_sbindir}
-install -d %{buildroot}%{_modulesloaddir}
-install -m 0755 ./%{name} %{buildroot}/%{_sbindir}/
-mkdir -p %{buildroot}/%{_modulesloaddir}
+mkdir -p %{buildroot}%{_sbindir}
+install -m 0755 ./%{name} %{buildroot}%{_sbindir}/
+mkdir -p %{buildroot}%{_modulesloaddir}
 cat > %{buildroot}%{_modulesloaddir}/%{name}.conf << EOF
 msr
 EOF
