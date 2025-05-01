@@ -28,16 +28,11 @@ Disclaimer: This software can damage your hardware, use at your own risk.
 %install
 mkdir -p %{buildroot}%{_sbindir}
 install -m 0755 ./%{name} %{buildroot}%{_sbindir}/
-mkdir -p %{buildroot}%{_modulesloaddir}
-cat > %{buildroot}%{_modulesloaddir}/%{name}.conf << EOF
-msr
-EOF
 
 %files
 %license LICENSE
 %doc README.md
 %{_sbindir}/%{name}
-%{_modulesloaddir}/%{name}.conf
 
 %changelog
 {{{ git_dir_changelog }}}
