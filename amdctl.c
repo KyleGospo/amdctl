@@ -88,7 +88,7 @@
 
 #define MAX_VOLTAGE  1550
 #define MID_VOLTAGE  1162.5
-#define MAX_VID      124
+#define MAX_VID      255
 #define MID_VID      63
 #define MIN_VID      32
 #define VID_DIVIDOR1 25
